@@ -83,9 +83,6 @@ void send_earthquake_payload() {
         if (!RAK5860_connect()) {
             MYLOG("NB", "Connection failed");
             continue;
-
-		
-
         }
 		int csq = RAK5860_getRSSI();
 		MYLOG("APP", "Raw CSQ = %d", csq);
@@ -98,8 +95,7 @@ void send_earthquake_payload() {
         "\"shutoff\":%d,\"collapse\":%d,\"batt\":%.2f,\"rssi\":%d}",
         savedSI, savedPGA, jma_intensity, shutoff_alert, collapse_alert, battery_voltage, rssi);
 
-        if (
-            (payload)) {
+        if (send_http_post(payload)) {
             MYLOG("NB", "Data sent: %s", payload);
 			RAK5860_setConnected(false);
             return;
