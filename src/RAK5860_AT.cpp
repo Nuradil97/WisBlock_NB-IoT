@@ -255,7 +255,7 @@ bool send_http_post(const char *payload) {
         return false;
     }
 
-    BG77.println("https://iot.beeline.kz/api/v1/integrations/http/ee2b3f5d-15ed-bc9b-7aed-9065f77e87cc");
+    BG77.println("https://example.com"); //Type your endpoint here
     delay(2000);
 
     char cmd[32];
